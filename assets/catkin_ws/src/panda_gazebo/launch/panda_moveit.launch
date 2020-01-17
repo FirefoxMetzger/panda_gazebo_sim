@@ -1,0 +1,25 @@
+<launch>
+    <param name="robot_description" textfile="$(find panda_description)/urdf/panda.urdf" />
+    <rosparam file="$(find panda_gazebo)/config/panda_control.yaml" command="load"/>
+
+    <!-- Spawn the robot into the empty world -->
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find panda_description)/urdf/panda.urdf -urdf -model panda" />
+
+    <!-- Launch Gazebo-->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find panda_gazebo)/worlds/panda.world"/>
+        <arg name="verbose" value="true" />
+        <!-- more default parameters can be changed here -->
+    </include>
+
+    <!-- load the controllers -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller panda_hand_controller panda_arm_controller" />
+
+    <include file="$(find panda_moveit)/launch/move_group.launch">
+    </include>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find panda_gazebo)/config/panda.rviz">
+        
+    </node>
+ </launch>

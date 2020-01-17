@@ -1,0 +1,1 @@
+The build script will generate the .urdf from the .xacro and place it here.

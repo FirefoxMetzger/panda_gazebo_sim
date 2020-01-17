@@ -1,0 +1,8 @@
+<launch>
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find panda_description)/urdf/panda.urdf -urdf -model panda" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find panda_gazebo)/worlds/panda.world"/>
+    <!-- more default parameters can be changed here -->
+  </include>
+</launch>
