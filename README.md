@@ -33,29 +33,32 @@ docker run -it \
 xhost -local:root
 ```
 
-### Launch gazebo and moveit
-
-## Getting just the model
-If you want to only get the (.sdf) models of the robot, you can build the docker image by
-running the `build.sh`. It will create a tmp direcory in the project and within it there
-are two folders. `panda_arm_hand` is the model with gripper attached, and `panda_arm` is 
-the model without any endeffector.
-
-## Issues
-If you have any problems setting this up, please feel free to open an issue.
-
-### Running your own environment
-Running your own environment to simulate panda in is easy thanks to Docker's ability to 
-mount volumes. Simply replace the worlds and models directory with your custom version.
+### Launch a Gazebo server and moveit
+This will start Gazebo in server mode (verbose) loading an empty.world and spawning 
+panda in it. It will also start moveit and the respective controller.
+```
+docker run -it panda_gazebo_sim roslaunch panda_gazebo panda_moveit.launch
 ```
 
+### Launch Gazebo only (default)
+This will start Gazebo in server mode(verbose) loading an empty.world and spawning 
+panda in it.
+```
+docker run -it panda_gazebo_sim
 ```
 
-The world file is stored located at
+## Your own Gazebo world
+To rock your own gazebo world mount your custom worlds and models directories 
+in the locations where they are stored in the image:
 ```
-/catkin_ws/src/panda_gazebo/worlds/panda.world
+docker run \
+    --volume="<absolute/path/to/your/panda.world>:/catkin_ws/src/panda_gazebo/worlds/" \
+    --volume="<absolute/path/to/your/models/folder/>:/catkin_ws/src/panda_gazebo/models" \
+    panda_gazebo_sim
 ```
-and the models folder lives at
-```
-/catkin_ws/src/panda_gazebo/models
-```
+Keep in mind that the world file has to be called `panda.world`.
+
+## Issues and Suggestions
+The issue page is open for any issues or feature suggestions. If you like this repo, 
+consider giving it a star. Positive feedback lets me know that there is interest in this 
+topic, and I will do more work like this.

@@ -16,4 +16,4 @@ RUN apt-get update \
 COPY assets/catkin_ws/src/panda_gazebo/models /root/.gazebo/models
 COPY assets/catkin_ws/ /catkin_ws
 COPY assets/ros_entrypoint.sh /ros_entrypoint.sh
-CMD roslaunch panda_gazebo panda_moveit.launch
+CMD roslaunch panda_gazebo panda.launch
