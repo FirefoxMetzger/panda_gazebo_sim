@@ -7,7 +7,7 @@ RUN bash -c 'source /opt/ros/kinetic/setup.bash \
     && apt update \
     && apt install -y python-catkin-tools \
     && cd /catkin_ws \
-    && catkin build \
+    && bash -c 'source /opt/ros/kinetic/setup.bash && catkin build' \
     && rm -rf /var/lib/apt/lists/*
 
 FROM osrf/ros:kinetic-desktop-full-xenial
