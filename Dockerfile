@@ -4,8 +4,8 @@ COPY assets/panda_xacro/ /xacro
 COPY assets/catkin_ws/ /catkin_ws
 RUN bash -c 'source /opt/ros/kinetic/setup.bash \
     && rosrun xacro xacro --inorder /xacro/panda_arm_hand.urdf.xacro > /catkin_ws/src/panda_description/urdf/panda.urdf' \
-    && apt update \
-    && apt install -y python-catkin-tools \
+    && apt-get update \
+    && apt-get install -y python-catkin-tools \
     && cd /catkin_ws \
     && bash -c 'source /opt/ros/kinetic/setup.bash && catkin build' \
     && rm -rf /var/lib/apt/lists/*
