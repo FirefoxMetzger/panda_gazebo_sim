@@ -21,9 +21,10 @@ services:
       - QT_X11_NO_MITSHM=1
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./assets/catkin_ws/src/panda_gazebo/config/:/pandas_config/
     depends_on: 
       - gazebo
-    command: ["rosrun", "rviz", "rviz", "-d $(find panda_gazebo)/config/panda.rviz"]
+    command: ["rosrun", "rviz", "rviz", "-d /pandas_config/panda.rviz"]
 
   test:
     image: osrf/ros:kinetic-desktop-full-xenial
