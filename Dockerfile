@@ -10,7 +10,7 @@ RUN bash -c 'source /opt/ros/kinetic/setup.bash \
     && bash -c 'source /opt/ros/kinetic/setup.bash && catkin build' \
     && rm -rf /var/lib/apt/lists/*
 
-FROM osrf/ros:kinetic-desktop-full-xenial
+FROM osrf/ros:kinetic-desktop-full-xenial AS panda_gazebo
 # install the missing dependencies and update gazebo to 7.16
 RUN sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list' \
     && curl http://packages.osrfoundation.org/gazebo.key | apt-key add - \
