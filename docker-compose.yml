@@ -12,4 +12,4 @@ services:
       - QT_X11_NO_MITSHM=1
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-    command: ["panda_gazebo_sim", "roslaunch", "panda_gazebo", "panda_rviz.launch"]
+    command: ["roslaunch", "panda_gazebo", "panda_rviz.launch"]
