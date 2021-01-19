@@ -2,11 +2,9 @@ version: "3.8"
 
 services:
   gazebo:
+    image: panda_gazebo_sim
     build:
-      image: panda_gazebo_sim
       target: panda_gazebo
-      dockerfile: ./Dockerfile
-      context: ./
 
     environment:
       - DISPLAY
