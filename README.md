@@ -5,6 +5,23 @@ pre-installed. The original .xacro files were taken from the official Framka Emi
 [ros package repo](https://github.com/frankaemika/franka_ros) and are also published
 under Apache 2.0.
 
+## Via Docker-Compose
+You have the option to run and build the image using docker-compose. The compose file
+(`docker-compose.yml`) is also a nice starting point to add your own nodes on top.
+
+```
+docker-compose up --build
+```
+
+or in two commands
+```
+// build once
+docker-compose build 
+
+// then run repeatedly as
+docker-compose up
+```
+
 ## Installation
 
 Building the image locally is straight forward

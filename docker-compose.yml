@@ -6,7 +6,6 @@ services:
     build:
       context: .
       target: panda_gazebo
-
     environment:
       - DISPLAY=unix$DISPLAY
       - QT_X11_NO_MITSHM=1
