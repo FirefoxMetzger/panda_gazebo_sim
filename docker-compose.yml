@@ -4,6 +4,7 @@ services:
   gazebo:
     image: panda_gazebo_sim
     build:
+      context: .
       target: panda_gazebo
 
     environment:
