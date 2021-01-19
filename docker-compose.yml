@@ -12,3 +12,6 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
     command: ["roslaunch", "panda_gazebo", "panda_rviz.launch"]
+
+  test:
+    image: osrf/ros:kinetic-desktop-full-xenial
