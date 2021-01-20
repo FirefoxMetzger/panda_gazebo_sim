@@ -11,7 +11,7 @@ services:
       - QT_X11_NO_MITSHM=1
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-    command: ["roslaunch", "panda_gazebo", "panda_rviz.launch"]
+    command: ["roslaunch", "panda_gazebo", "panda_gazebo.launch"]
 
   rviz:
     image: panda_gazebo_sim
@@ -26,9 +26,14 @@ services:
       - gazebo
     command: ["rosrun", "rviz", "rviz", "-d", "/pandas_config/panda.rviz"]
 
-  test:
-    image: osrf/ros:kinetic-desktop-full-xenial
+  rospy:
+    image: rospy3
+    build:
+      context: .
+      target: rospy3
     environment:
       - ROS_MASTER_URI=http://gazebo:11311
+    volumes:
+      - ./:/ros_scripts
     depends_on: 
       - gazebo
