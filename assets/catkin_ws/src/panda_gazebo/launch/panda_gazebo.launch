@@ -7,7 +7,7 @@
 
     <!-- Launch Gazebo-->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="world_name" value="$(find panda_gazebo)/worlds/panda.world" />
+        <arg name="world_name" value="$(find panda_gazebo)/worlds/$(env WORLD_FILE)" />
         <!-- <arg name="verbose" value="true" /> -->
     </include>
 

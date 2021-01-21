@@ -9,6 +9,8 @@ RUN bash -c 'source /opt/ros/kinetic/setup.bash \
     && cd /catkin_ws \
     && bash -c 'source /opt/ros/kinetic/setup.bash && catkin build' \
     && rm -rf /var/lib/apt/lists/*
+ENV WORLD_FILE=panda.world
+
 
 FROM osrf/ros:kinetic-desktop-full AS panda_gazebo
 # install the missing dependencies and update gazebo to 7.16
