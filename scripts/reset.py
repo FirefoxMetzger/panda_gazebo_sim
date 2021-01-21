@@ -251,80 +251,13 @@ class MoveGroupPythonIntefaceTutorial(object):
         return False
         # END_SUB_TUTORIAL
 
-    def attach_box(self, timeout=4):
-        # Copy class variables to local variables to make the web tutorials more
-        # clear. In practice, you should use the class variables directly unless
-        # you have a good reason not to.
-        box_name = self.box_name
-        robot = self.robot
-        scene = self.scene
-        eef_link = self.eef_link
-        group_names = self.group_names
-
-        # BEGIN_SUB_TUTORIAL attach_object
-        ##
-        # Attaching Objects to the Robot
-        # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        # Next, we will attach the box to the Panda wrist. Manipulating objects
-        # requires the robot be able to touch them without the planning scene
-        # reporting the contact as a collision. By adding link names to the
-        # ``touch_links`` array, we are telling the planning scene to ignore
-        # collisions between those links and the box. For the Panda robot, we
-        # set ``grasping_group = 'hand'``. If you are using a different robot,
-        # you should change this value to the name of your end effector group
-        # name.
-        grasping_group = 'hand'
-        touch_links = robot.get_link_names(group=grasping_group)
-        scene.attach_box(eef_link, box_name, touch_links=touch_links)
-        # END_SUB_TUTORIAL
-
-        # We wait for the planning scene to update.
-        return self.wait_for_state_update(box_is_attached=True, box_is_known=False, timeout=timeout)
-
-    def detach_box(self, timeout=4):
-        # Copy class variables to local variables to make the web tutorials more
-        # clear. In practice, you should use the class variables directly unless
-        # you have a good reason not to.
-        box_name = self.box_name
-        scene = self.scene
-        eef_link = self.eef_link
-
-        # BEGIN_SUB_TUTORIAL detach_object
-        ##
-        # Detaching Objects from the Robot
-        # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        # We can also detach and remove the object from the planning scene:
-        scene.remove_attached_object(eef_link, name=box_name)
-        # END_SUB_TUTORIAL
-
-        # We wait for the planning scene to update.
-        return self.wait_for_state_update(box_is_known=True, box_is_attached=False, timeout=timeout)
-
-    def remove_box(self, timeout=4):
-        # Copy class variables to local variables to make the web tutorials more
-        # clear. In practice, you should use the class variables directly unless
-        # you have a good reason not to.
-        box_name = self.box_name
-        scene = self.scene
-
-        # BEGIN_SUB_TUTORIAL remove_object
-        ##
-        # Removing Objects from the Planning Scene
-        # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        # We can remove the box from the world.
-        scene.remove_world_object(box_name)
-
-        # **Note:** The object must be detached before we can remove it from the
-        # world END_SUB_TUTORIAL
-
-        # We wait for the planning scene to update.
-        return self.wait_for_state_update(box_is_attached=False, box_is_known=False, timeout=timeout)
-
 
 def main():
     try:
-        robot = MoveGroupPythonIntefaceTutorial()
-        robot.go_to_joint_state(STARTING_POS)
+        moveit_commander.roscpp_initialize(sys.argv)
+        move_group = moveit_commander.MoveGroupCommander("panda_arm")
+        move_group.go(STARTING_POS, wait=True)
+        group.stop()
     except rospy.ROSInterruptException:
         return
     except KeyboardInterrupt:
