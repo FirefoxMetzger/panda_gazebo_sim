@@ -13,6 +13,7 @@ services:
       - USE_GUI=true
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./imgs:/tmp/camera_save_tutorial
     command: ["roslaunch", "panda_gazebo", "panda_gazebo.launch"]
 
   rviz:
