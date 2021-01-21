@@ -16,6 +16,11 @@ STARTING_POS = np.array([
     0.7933720851335472
 ])
 
+STARTING_POS_HAND = np.array([
+    0.1,
+    0.1
+])
+
 
 def all_close(goal, actual, tolerance):
     """
@@ -42,6 +47,10 @@ def all_close(goal, actual, tolerance):
 
 if __name__ == '__main__':
     moveit_commander.roscpp_initialize(sys.argv)
-    move_group = moveit_commander.MoveGroupCommander("panda_arm")
-    move_group.go(STARTING_POS, wait=True)
-    move_group.stop()
+    panda_arm = moveit_commander.MoveGroupCommander("panda_arm")
+    panda_arm.go(STARTING_POS, wait=True)
+    panda_arm.stop()
+
+    panda_hand = moveit_commander.MoveGroupCommander("panda_hand")
+    panda_hand.go(STARTING_POS_HAND, wait=True)
+    panda_hand.stop()
