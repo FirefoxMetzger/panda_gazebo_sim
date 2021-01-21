@@ -9,7 +9,7 @@ services:
     environment:
       - DISPLAY=unix$DISPLAY
       - QT_X11_NO_MITSHM=1
-      - WORLD_FILE=legibility.world
+      - WORLD_FILE=legibility_no_video.world
       - USE_GUI=true
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
