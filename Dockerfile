@@ -9,7 +9,8 @@ RUN bash -c 'source /opt/ros/kinetic/setup.bash \
     && cd /catkin_ws \
     && bash -c 'source /opt/ros/kinetic/setup.bash && catkin build' \
     && rm -rf /var/lib/apt/lists/*
-ENV WORLD_FILE=panda.world
+ENV WORLD_FILE=panda.world \
+    USE_GUI=true
 
 
 FROM osrf/ros:kinetic-desktop-full AS panda_gazebo

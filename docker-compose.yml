@@ -10,6 +10,7 @@ services:
       - DISPLAY=unix$DISPLAY
       - QT_X11_NO_MITSHM=1
       - WORLD_FILE=legibility.world
+      - USE_GUI=true
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
     command: ["roslaunch", "panda_gazebo", "panda_gazebo.launch"]

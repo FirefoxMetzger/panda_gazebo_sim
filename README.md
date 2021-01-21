@@ -5,21 +5,34 @@ pre-installed. The original .xacro files were taken from the official Framka Emi
 [ros package repo](https://github.com/frankaemika/franka_ros) and are also published
 under Apache 2.0.
 
-## Via Docker-Compose
-You have the option to run and build the image using docker-compose. The compose file
-(`docker-compose.yml`) is also a nice starting point to add your own nodes on top.
+## Docker-Compose Workflow
+The repo provides a `docker-compose.yml` file which stores common configuration options
+with which the simulator is started. It also orchestrates starting multiple containers
+and the necessary network setup to communicate between them. This allows you to start
+running python scripts against the simulator in almost no time.
 
+You will need to have docker-compose installed for this to work.
+
+Before the first run, and whenever you change the image, rebuild it via
 ```
-docker-compose up --build
+docker-compose build
 ```
 
-or in two commands
+Launch rviz
 ```
-// build once
-docker-compose build 
+docker-compose run rviz
+```
 
-// then run repeatedly as
-docker-compose up
+Launch a terminal connected to the ros network
+```
+docker-compose run rospy
+```
+(**Note:** The main motivation for this is to run python moveit scripts, but it
+can also be used in other ways.)
+
+Once you are done, close the simulator and delete all temorary files
+```
+docker-compose down
 ```
 
 ## Installation
