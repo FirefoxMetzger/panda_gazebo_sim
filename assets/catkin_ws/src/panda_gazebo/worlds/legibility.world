@@ -11,32 +11,32 @@
       <static>true</static>
       <pose>-0.065198 0.928291 0.421541 0 0.199643 -1.26299</pose>
       <link name='link'>
-        <visual name='visual'>
-          <geometry>
-            <box>
-              <size>0.1 0.1 0.1</size>
-            </box>
-          </geometry>
-        </visual>
         <sensor name='my_camera' type='camera'>
           <camera>
             <save enabled="true">
               <path>/tmp/camera_save_tutorial</path>
             </save>
-            <horizontal_fov>1.047</horizontal_fov>
+            <!-- <horizontal_fov>1.047</horizontal_fov> -->
             <image>
               <width>1920</width>
               <height>1080</height>
             </image>
-            <clip>
+            <!-- <clip>
               <near>0.1</near>
               <far>100</far>
-            </clip>
+            </clip> -->
           </camera>
           <always_on>1</always_on>
           <update_rate>30</update_rate>
         </sensor>
       </link>
     </model>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>-0.065198 0.928291 0.421541 0 0.199643 -1.26299</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
   </world>
 </sdf>
