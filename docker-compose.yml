@@ -12,6 +12,7 @@ services:
       - WORLD_FILE=legibility.world
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./imgs:/tmp/camera_save_tutorial
     command: ["roslaunch", "panda_gazebo", "panda_gazebo.launch"]
 
   rviz:
