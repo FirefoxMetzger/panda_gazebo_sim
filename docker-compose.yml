@@ -7,7 +7,7 @@ services:
       context: .
       target: panda_gazebo
     environment:
-      - DISPLAY=unix$DISPLAY
+      - DISPLAY=$DISPLAY
       - QT_X11_NO_MITSHM=1
       - WORLD_FILE=legibility_no_video.world
       - USE_GUI=true
@@ -20,7 +20,7 @@ services:
     image: panda_gazebo_sim
     environment:
       - ROS_MASTER_URI=http://gazebo:11311
-      - DISPLAY=unix$DISPLAY
+      - DISPLAY=$DISPLAY
       - QT_X11_NO_MITSHM=1
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw

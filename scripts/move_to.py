@@ -14,17 +14,21 @@ STARTING_POS = np.array([
 ])
 
 STARTING_POS_HAND = np.array([
-    0.1,
-    0.1
+    0.0,
+    0.0
 ])
 
 if __name__ == '__main__':
-    print(sys.argv)
-    moveit_commander.roscpp_initialize()
+    pos = np.fromstring(sys.argv[1], sep=', ')
+    print(pos)
+    if pos.size != 7:
+        print("Pose doesn't specify all 7 DoFs")
+        exit(1)
+    moveit_commander.roscpp_initialize([sys.argv[0]])
     panda_arm = moveit_commander.MoveGroupCommander("panda_arm")
-    panda_arm.go(STARTING_POS, wait=True)
+    panda_arm.go(pos, wait=True)
     panda_arm.stop()
 
-    panda_hand = moveit_commander.MoveGroupCommander("panda_hand")
-    panda_hand.go(STARTING_POS_HAND, wait=True)
-    panda_hand.stop()
+    # panda_hand = moveit_commander.MoveGroupCommander("panda_hand")
+    # panda_hand.go(STARTING_POS_HAND, wait=True)
+    # panda_hand.stop()
