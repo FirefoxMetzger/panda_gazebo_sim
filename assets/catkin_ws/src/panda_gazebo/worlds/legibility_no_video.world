@@ -9,7 +9,7 @@
     </include>
     <model name="blue_target">
       <pose>0.3910664084153384 0.0771657026449518 0.05 0 0 0</pose>
-      <static>true</static>
+      <static>false</static>
       <link name="link">
         <inertial>
           <mass>1.0</mass>
@@ -47,7 +47,7 @@
     </model>
     <model name="red_target">
       <pose>0.47700674557117423 0.17651810850942137 0.05 0 0 0</pose>
-      <static>true</static>
+      <static>false</static>
       <link name="link">
         <inertial>
           <mass>1.0</mass>
@@ -85,7 +85,7 @@
     </model>
     <model name="green_target">
       <pose>0.48250693780844245 -0.02465194585677113 0.05 0 0 0</pose>
-      <static>true</static>
+      <static>false</static>
       <link name="link">
         <inertial>
           <mass>1.0</mass>
