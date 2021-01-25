@@ -147,7 +147,7 @@ panda_arm:
     - SPARS
     - SPARStwo
 panda_hand:
-  default_planner_config: ""
+  default_planner_config: RRT
   planner_configs:
     - SBL
     - EST
