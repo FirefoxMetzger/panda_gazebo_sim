@@ -26,6 +26,9 @@
 
         state_publish_rate: 25
 
+        constraints:
+            stopped_velocity_tolerance: 0.05
+
     panda_hand_controller:
         type: effort_controllers/JointTrajectoryController
         joints:
