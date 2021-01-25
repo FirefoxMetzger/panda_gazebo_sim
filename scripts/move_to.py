@@ -41,7 +41,7 @@ if __name__ == '__main__':
         print("Pose doesn't specify all 7 DoFs")
         exit(1)
     moveit_commander.roscpp_initialize([sys.argv[0]])
-    rospy.init("move_node", anonymous=True)
+    rospy.init_node("move_node", anonymous=True)
     panda_arm = moveit_commander.MoveGroupCommander("panda_arm")
     panda_arm.go(pos, wait=True)
     panda_arm.stop()
