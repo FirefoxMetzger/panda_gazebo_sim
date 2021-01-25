@@ -123,7 +123,7 @@
     </model>
     <model name='camera'>
       <static>true</static>
-      <pose frame=''>-0.075751 1.32169 0.546089 0 0.199643 -1.26299</pose>
+      <pose frame=''>-0.050861 1.34756 0.496091 0 0.163643 -1.36299</pose>
       <link name='link'>
         <sensor name='my_camera' type='camera'>
           <camera>
@@ -142,7 +142,7 @@
     </model>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose frame=''>-0.075751 1.32169 0.546089 0 0.199643 -1.26299</pose>
+        <pose frame=''>-0.050861 1.34756 0.496091 0 0.163643 -1.36299</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
