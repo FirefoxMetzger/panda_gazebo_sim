@@ -1,6 +1,7 @@
 import sys
 import moveit_commander
 import numpy as np
+import rospy
 
 
 STARTING_POS = np.array([
@@ -40,9 +41,14 @@ if __name__ == '__main__':
         print("Pose doesn't specify all 7 DoFs")
         exit(1)
     moveit_commander.roscpp_initialize([sys.argv[0]])
+    rospy.init("move_node", anonymous=True)
     panda_arm = moveit_commander.MoveGroupCommander("panda_arm")
     panda_arm.go(pos, wait=True)
     panda_arm.stop()
+
+    pose = panda_arm.get_current_pose().pose
+    print("Current Pose: ", pose.x, pose.y, pose.z)
+
 
     # panda_hand = moveit_commander.MoveGroupCommander("panda_hand")
     # panda_hand.go(STARTING_POS_HAND, wait=True)
