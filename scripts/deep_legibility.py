@@ -5,8 +5,9 @@ import rospy
 import json
 import os
 
-
-GOALS = json.load(os.path.abspath(__file__) + "named_keyframes.json")
+location = os.path.dirname(os.path.abspath(__file__))
+with open(location + "/named_keyframes.json", "r") as json_file:
+    GOALS = json.load(json_file)
 
 STARTING_POS_HAND = np.array([
     0.0,
@@ -34,7 +35,3 @@ if __name__ == '__main__':
 
     pose = panda_arm.get_current_pose().pose
     print("Current Pose: ", pose.position.x, pose.position.y, pose.position.z)
-
-    panda_hand = moveit_commander.MoveGroupCommander("panda_hand")
-    panda_hand.go(STARTING_POS_HAND, wait=True)
-    panda_hand.stop()
