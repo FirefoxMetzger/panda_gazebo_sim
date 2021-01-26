@@ -17,8 +17,8 @@ GOALS = {
 }
 
 STARTING_POS_HAND = np.array([
-    0.0,
-    0.0
+    0.03,
+    0.03
 ])
 
 if __name__ == '__main__':
@@ -34,13 +34,11 @@ if __name__ == '__main__':
     moveit_commander.roscpp_initialize([sys.argv[0]])
     rospy.init_node("move_node", anonymous=True)
     panda_arm = moveit_commander.MoveGroupCommander("panda_arm")
+    panda_hand = moveit_commander.MoveGroupCommander("panda_hand")
+    
+    
     panda_arm.go(pos, wait=True)
     panda_arm.stop()
 
     pose = panda_arm.get_current_pose().pose
     print("Current Pose: ", pose.position.x, pose.position.y, pose.position.z)
-
-
-    panda_hand = moveit_commander.MoveGroupCommander("panda_hand")
-    panda_hand.go(STARTING_POS_HAND, wait=True)
-    panda_hand.stop()
