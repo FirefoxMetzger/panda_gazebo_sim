@@ -17,8 +17,8 @@ STARTING_POS = np.array([
 ])
 
 STARTING_POS_HAND = np.array([
-    0.1,
-    0.1
+    0.03,
+    0.03
 ])
 
 
