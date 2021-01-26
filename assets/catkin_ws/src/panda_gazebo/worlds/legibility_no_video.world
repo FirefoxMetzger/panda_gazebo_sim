@@ -9,7 +9,7 @@
     </include>
     <model name="blue_target">
       <pose>0.3910664084153384 0.0771657026449518 0.05 0 0 0</pose>
-      <static>false</static>
+      <static>true</static>
       <link name="link">
         <inertial>
           <mass>1.0</mass>
@@ -23,13 +23,13 @@
             <izz>0.0004</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
           </inertia>
         </inertial>
-        <collision name="collision">
+        <!-- <collision name="collision">
           <geometry>
             <box>
               <size>.03 .03 .1</size>
             </box>
           </geometry>
-        </collision>
+        </collision> -->
         <visual name="visual">
           <geometry>
             <box>
@@ -47,7 +47,7 @@
     </model>
     <model name="red_target">
       <pose>0.47700674557117423 0.17651810850942137 0.05 0 0 0</pose>
-      <static>false</static>
+      <static>true</static>
       <link name="link">
         <inertial>
           <mass>1.0</mass>
@@ -61,13 +61,13 @@
             <izz>0.0004</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
           </inertia>
         </inertial>
-        <collision name="collision">
+        <!-- <collision name="collision">
           <geometry>
             <box>
               <size>.03 .03 .10</size>
             </box>
           </geometry>
-        </collision>
+        </collision> -->
         <visual name="visual">
           <geometry>
             <box>
@@ -85,7 +85,7 @@
     </model>
     <model name="green_target">
       <pose>0.48250693780844245 -0.02465194585677113 0.05 0 0 0</pose>
-      <static>false</static>
+      <static>true</static>
       <link name="link">
         <inertial>
           <mass>1.0</mass>
@@ -99,13 +99,13 @@
             <izz>0.0004</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
           </inertia>
         </inertial>
-        <collision name="collision">
+        <!-- <collision name="collision">
           <geometry>
             <box>
               <size>.03 .03 .1</size>
             </box>
           </geometry>
-        </collision>
+        </collision> -->
         <visual name="visual">
           <geometry>
             <box>
