@@ -15,23 +15,12 @@ STARTING_POS_HAND = np.array([
 ])
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print("Specify the pose to move to.")
-        print("Valid Values: " + str(GOALS.keys()))
-        exit(1)
-
-    pos = sys.argv[1]
-    if pos not in GOALS:
-        print("Specify the pose to move to.")
-        print("Valid Values: " + str(GOALS.keys()))
-        exit(1)
-
-    pos = GOALS[pos]
     moveit_commander.roscpp_initialize([sys.argv[0]])
-    rospy.init_node("move_node", anonymous=True)
+    # rospy.init_node("move_node", anonymous=True)
     panda_arm = moveit_commander.MoveGroupCommander("panda_arm")
-    panda_arm.go(pos, wait=True)
-    panda_arm.stop()
 
-    pose = panda_arm.get_current_pose().pose
-    print("Current Pose: ", pose.position.x, pose.position.y, pose.position.z)
+    poses = np.load(location+"/optimized_trajectory.npy").reshape((-1, 7))
+
+    for pose in poses:
+        panda_arm.go(pose, wait=True)
+    panda_arm.stop()
