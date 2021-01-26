@@ -19,7 +19,13 @@ if __name__ == '__main__':
     # rospy.init_node("move_node", anonymous=True)
     panda_arm = moveit_commander.MoveGroupCommander("panda_arm")
 
-    poses = np.load(location+"/optimized_trajectory.npy").reshape((-1, 7))
+    if sys.argv[1] == "initial":
+        poses = np.load(location+"/initial_trajectory.npy").reshape((-1, 7))
+    elif sys.argv[1] == "deep":
+        poses = np.load(location+"/optimized_trajectory.npy").reshape((-1, 7))
+    elif sys.argv[1] == "dragan":
+        pass
+
 
     for pose in poses:
         panda_arm.go(pose, wait=True)
