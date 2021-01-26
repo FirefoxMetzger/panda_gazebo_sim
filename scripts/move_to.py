@@ -15,15 +15,7 @@ STARTING_POS_HAND = np.array([
 ])
 
 if __name__ == '__main__':
-    pos = sys.argv[1]
-    if pos in GOALS:
-        pos = GOALS[pos]
-    else:
-        pos = np.fromstring(sys.argv[1], sep=', ')
-        print(pos)
-    if pos.size != 7:
-        print("Pose doesn't specify all 7 DoFs")
-        exit(1)
+    pos = GOALS[sys.argv[1]]
     moveit_commander.roscpp_initialize([sys.argv[0]])
     rospy.init_node("move_node", anonymous=True)
     panda_arm = moveit_commander.MoveGroupCommander("panda_arm")
