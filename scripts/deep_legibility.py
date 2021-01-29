@@ -24,8 +24,7 @@ if __name__ == '__main__':
     elif sys.argv[1] == "deep":
         poses = np.load(location+"/optimized_trajectory.npy").reshape((-1, 7))
     elif sys.argv[1] == "dragan":
-        pass
-
+        poses = np.load(location+"/dragan_trajectory.npy").reshape((-1, 7))
 
     for pose in poses:
         panda_arm.go(pose, wait=True)
