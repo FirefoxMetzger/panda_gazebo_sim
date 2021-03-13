@@ -7,6 +7,8 @@ Gazebo has reached its end-of-life and has been superseeded by
 simulator to Ignition and the new source code to run simulations can be found
 in a new repository: https://github.com/FirefoxMetzger/panda-ignition-sim
 
+---
+
 The purpose of this repo is to provide an easy-access simulator for the Franka
 Emika Panda robot. It does so using Gazebo, ROS1, and Docker. This allows to
 quickly start and stop a simulator without having to struggle too much setting
