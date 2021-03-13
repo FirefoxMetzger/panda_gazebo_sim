@@ -1,5 +1,12 @@
 # Franka Emika Panda Simulator
 
+**⚠️ This simulator has been archived in favor of Ignition Gazebo ⚠️**
+
+Gazebo has reached its end-of-life and has been superseeded by
+[Ignition](https://ignitionrobotics.org/home). Consequentially, I migrated this
+simulator to Ignition and the new source code to run simulations can be found
+in a new repository: https://github.com/FirefoxMetzger/panda-ignition-sim
+
 The purpose of this repo is to provide an easy-access simulator for the Franka
 Emika Panda robot. It does so using Gazebo, ROS1, and Docker. This allows to
 quickly start and stop a simulator without having to struggle too much setting
@@ -9,7 +16,7 @@ without GUI) to explore learning based approaches to robot control.
 **Features**
 
 - Easy setup to control the robot in python (rospy)
-- Process isolation to allow multiple simulators on a single node (no GUI)
+- ~Process isolation to allow multiple simulators on a single node (no GUI)~
 - Freely configurable (and scriptable) world
 - Easy migration and sharing
 - Runs on Windows, Mac OS, and Linux
